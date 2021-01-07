@@ -6,7 +6,10 @@ public class Client {
         ScoreRecord scoreRecord = new ScoreRecord();
 
         DataSheetView dataSheetView = new DataSheetView(scoreRecord, 3);
+        MinMaxView minMaxView = new MinMaxView(scoreRecord);
+
         scoreRecord.setDataSheetView(dataSheetView);
+        scoreRecord.setMinMaxView(minMaxView);
 
         for (int index = 1; index <= 5; index++) {
             int score = index * 10;
