@@ -1,6 +1,6 @@
 package com.company;
 
-public class Door {
+public abstract class Door {
     private DoorStatus doorStatus;
 
     public Door() {
@@ -11,11 +11,23 @@ public class Door {
         return doorStatus;
     }
 
+    protected abstract void doClose();
+
     public void close() {
+        if(doorStatus == DoorStatus.CLOSED) {
+            return;
+        }
+        doClose();
         doorStatus = DoorStatus.CLOSED;
     }
 
+    protected abstract void doOpen();
+
     public void open() {
+        if(doorStatus == DoorStatus.OPENED) {
+            return;
+        }
+        doOpen();
         doorStatus = DoorStatus.OPENED;
     }
 }
