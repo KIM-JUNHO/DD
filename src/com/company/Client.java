@@ -3,10 +3,11 @@ package com.company;
 public class Client {
 
     public static void main(String[] args) {
-        RoadDisplay road = new RoadDisplay();
+        Display road = new RoadDisplay();
         road.draw();
-
-        RoadDisplay roadWithlane = new RoadDisplayWithLane();
-        roadWithlane.draw();
+        Display roadWithLane = new LaneDecorator(new RoadDisplay());
+        roadWithLane.draw();
+        Display roadWithTraffic = new TrafficDecorator(new RoadDisplay());
+        roadWithTraffic.draw();
     }
 }
