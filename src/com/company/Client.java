@@ -3,11 +3,19 @@ package com.company;
 public class Client {
 
     public static void main(String[] args) {
-        Door lgDoor = DoorFactory.createDoor(VendorID.LG);
-        Motor lgMotor = MotorFactory.createMotor(VendorID.LG);
-        lgMotor.setDoor(lgDoor);
+        ElevatorFactory factory = null;
+        String vendorName = "lg";
 
-        lgDoor.open();
-        lgMotor.move(Direction.UP);
+        if(vendorName.equalsIgnoreCase("LG"))
+            factory = new LGElevatorFactory();
+        else
+            factory = new HyundaiElevatorFactory();
+
+        Door door = factory.createDoor();
+        Motor motor = factory.createMotor();
+        motor.setDoor(door);
+
+        door.open();
+        motor.move(Direction.UP);
     }
 }
