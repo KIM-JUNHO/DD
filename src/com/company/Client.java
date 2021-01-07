@@ -3,23 +3,13 @@ package com.company;
 public class Client {
 
     public static void main(String[] args) {
-        String vendorName = "hyundai";
-        VendorID vendorID;
+        ElevatorManager emWithResponseTimeScheduler = new ElevatorManager(2, SchedulingStrategyID.RESPONSE_TIME);
+        emWithResponseTimeScheduler.requestElevator(10, Direction.UP);
 
-        if (vendorName.equalsIgnoreCase("LG"))
-            vendorID = VendorID.LG;
-        else if (vendorName.equalsIgnoreCase("Samsung"))
-            vendorID = VendorID.SAMSUNG;
-        else
-            vendorID = VendorID.HYUNDAI;
+        ElevatorManager emWithThroughputScheduler = new ElevatorManager(2, SchedulingStrategyID.THROUGHPUT);
+        emWithThroughputScheduler.requestElevator(10, Direction.UP);
 
-        ElevatorFactory factory = ElevatorFactoryFactory.getFactory(vendorID);
-
-        Door door = factory.createDoor();
-        Motor motor = factory.createMotor();
-        motor.setDoor(door);
-
-        door.open();
-        motor.move(Direction.UP);
+        ElevatorManager emWithDynamicScheduler = new ElevatorManager(2, SchedulingStrategyID.DYNAMIC);
+        emWithDynamicScheduler.requestElevator(10, Direction.UP);
     }
 }
