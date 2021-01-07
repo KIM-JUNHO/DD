@@ -1,24 +1,12 @@
 package com.company;
 
-public class HyundaiMotor {
-    private Door door;
-    private MotorStatus motorStatus;
-
+public class HyundaiMotor extends Motor {
     public HyundaiMotor(Door door) {
-        this.door = door;
-        motorStatus = MotorStatus.STOPPED;
+        super(door);
     }
 
     private void moveHyundaiMotor(Direction direction) {
         System.out.println("Move Hyundai Motor : " + direction);
-    }
-
-    public MotorStatus getMotorStatus() {
-        return motorStatus;
-    }
-
-    public void setMotorStatus(MotorStatus motorStatus) {
-        this.motorStatus = motorStatus;
     }
 
     public void move(Direction direction) {

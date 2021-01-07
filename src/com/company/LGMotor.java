@@ -1,24 +1,12 @@
 package com.company;
 
-public class LGMotor {
-    private Door door;
-    private MotorStatus motorStatus;
-
+public class LGMotor extends Motor {
     public LGMotor(Door door) {
-        this.door = door;
-        motorStatus = MotorStatus.STOPPED;
+        super(door);
     }
 
     private void moveLGMotor(Direction direction) {
         System.out.println("Move LG Motor : " + direction);
-    }
-
-    public MotorStatus getMotorStatus() {
-        return motorStatus;
-    }
-
-    public void setMotorStatus(MotorStatus motorStatus) {
-        this.motorStatus = motorStatus;
     }
 
     public void move(Direction direction) {
