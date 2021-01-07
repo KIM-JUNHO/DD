@@ -3,15 +3,17 @@ package com.company;
 public class Client {
 
     public static void main(String[] args) {
-        ElevatorFactory factory = null;
-        String vendorName = "samsung";
+        String vendorName = "hyundai";
+        VendorID vendorID;
 
         if (vendorName.equalsIgnoreCase("LG"))
-            factory = new LGElevatorFactory();
+            vendorID = VendorID.LG;
         else if (vendorName.equalsIgnoreCase("Samsung"))
-            factory = new SamsungElevatorFactory();
+            vendorID = VendorID.SAMSUNG;
         else
-            factory = new HyundaiElevatorFactory();
+            vendorID = VendorID.HYUNDAI;
+
+        ElevatorFactory factory = ElevatorFactoryFactory.getFactory(vendorID);
 
         Door door = factory.createDoor();
         Motor motor = factory.createMotor();

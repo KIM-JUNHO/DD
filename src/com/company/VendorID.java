@@ -1,5 +1,5 @@
 package com.company;
 
 public enum VendorID {
-    LG, HYUNDAI
+    LG, HYUNDAI, SAMSUNG
 }
