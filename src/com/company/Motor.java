@@ -4,6 +4,10 @@ public abstract class Motor {
     protected Door door;
     private MotorStatus motorStatus;
 
+    public Motor() {
+        motorStatus = MotorStatus.STOPPED;
+    }
+
     public Motor(Door door) {
         this.door = door;
         motorStatus = MotorStatus.STOPPED;
@@ -15,6 +19,14 @@ public abstract class Motor {
 
     public void setMotorStatus(MotorStatus motorStatus) {
         this.motorStatus = motorStatus;
+    }
+
+    public Door getDoor() {
+        return door;
+    }
+
+    public void setDoor(Door door) {
+        this.door = door;
     }
 
     public void move(Direction direction) {
