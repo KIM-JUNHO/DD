@@ -8,8 +8,8 @@ public class Client {
         DataSheetView dataSheetView = new DataSheetView(scoreRecord, 3);
         MinMaxView minMaxView = new MinMaxView(scoreRecord);
 
-        scoreRecord.setDataSheetView(dataSheetView);
-        scoreRecord.setMinMaxView(minMaxView);
+        scoreRecord.attach(dataSheetView);
+        scoreRecord.attach(minMaxView);
 
         for (int index = 1; index <= 5; index++) {
             int score = index * 10;
