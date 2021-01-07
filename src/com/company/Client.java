@@ -3,10 +3,18 @@ package com.company;
 public class Client {
 
     public static void main(String[] args) {
-        Alarm alarm = new Alarm();
         Lamp lamp = new Lamp();
-        Button alarmButton = new Button(lamp, alarm);
-        alarmButton.setMode(Mode.LAMP);
-        alarmButton.pressed();
+        Command lampOnCommand = new LampOnCommand(lamp);
+
+        Alarm alarm = new Alarm();
+        Command alarmStartCommand = new AlarmStartCommand(alarm);
+
+        Button button1 = new Button(lampOnCommand);
+        button1.pressed();
+
+        Button button2 = new Button(alarmStartCommand);
+        button2.pressed();
+        button2.setCommand(lampOnCommand);
+        button2.pressed();
     }
 }
