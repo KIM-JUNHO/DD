@@ -1,7 +1,6 @@
 package com.company;
 
 public class LGElevatorFactory extends ElevatorFactory {
-
     @Override
     public Motor createMotor() {
         return new LGMotor();

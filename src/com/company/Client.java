@@ -4,10 +4,12 @@ public class Client {
 
     public static void main(String[] args) {
         ElevatorFactory factory = null;
-        String vendorName = "lg";
+        String vendorName = "samsung";
 
-        if(vendorName.equalsIgnoreCase("LG"))
+        if (vendorName.equalsIgnoreCase("LG"))
             factory = new LGElevatorFactory();
+        else if (vendorName.equalsIgnoreCase("Samsung"))
+            factory = new SamsungElevatorFactory();
         else
             factory = new HyundaiElevatorFactory();
 
