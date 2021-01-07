@@ -1,9 +1,27 @@
 package com.company;
 
 public class Button {
+    private Lamp theLamp;
     private Alarm theAlarm;
-    public Button(Alarm theAlarm) { this.theAlarm = theAlarm; }
+    private Mode theMode;
+
+    public Button(Lamp theLamp, Alarm theAlarm) {
+        this.theLamp = theLamp;
+        this.theAlarm = theAlarm;
+    }
+
+    public void setMode(Mode mode) {
+        this.theMode = mode;
+    }
+
     public void pressed() {
-        theAlarm.start();
+        switch (theMode) {
+            case LAMP:
+                theLamp.turnOn();
+                break;
+            case ALARM:
+                theAlarm.start();
+                break;
+        }
     }
 }
