@@ -3,12 +3,10 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElevatorManager {
+public abstract class ElevatorManager {
     private List<ElevatorController> controllers;
-    private SchedulingStrategyID strategyID;
 
-    public ElevatorManager(int controllerCount, SchedulingStrategyID strategyID) {
-        this.strategyID = strategyID;
+    public ElevatorManager(int controllerCount) {
         controllers = new ArrayList<ElevatorController>(controllerCount);
         for (int i = 0; i < controllerCount; i++) {
             ElevatorController controller = new ElevatorController(i + 1);
@@ -16,12 +14,12 @@ public class ElevatorManager {
         }
     }
 
-    public void setStrategyID(SchedulingStrategyID strategyID) {
-        this.strategyID = strategyID;
-    }
+    // 팩토리 메서드: 스케줄링 전략 객체를 생성하는 기능 제공
+    protected abstract ElevatorScheduler getScheduler();
 
+    // 템플릿 메서드: 요청에 따라 엘리베이터를 선택하고 이동시킴
     void requestElevator(int destination, Direction direction) {
-        ElevatorScheduler scheduler = SchedulerFactory.getScheduler(strategyID);
+        ElevatorScheduler scheduler = getScheduler();   // primitive 또는 hook 메서드
         System.out.println(scheduler);
 
         int selectedElevator = scheduler.selectElevator(this, destination, direction);
