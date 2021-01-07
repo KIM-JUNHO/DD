@@ -6,6 +6,11 @@ public class Client {
         Robot taekwonV = new TaekwonV("TaekwonV");
         Robot atom = new Atom("Atom");
 
+        taekwonV.setMovingStrategy(new WalkingStrategy());
+        taekwonV.setAttackStrategy(new MissileStrategy());
+        atom.setMovingStrategy(new FlyingStrategy());
+        atom.setAttackStrategy(new PunchStrategy());
+
         System.out.println("My name is " + taekwonV.getName());
         taekwonV.move();
         taekwonV.attack();
